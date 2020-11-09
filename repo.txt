@@ -1,0 +1,11 @@
+https://github.com/AhmedOsamaBasil/PhD.git
+git init
+git add README.md
+git commit -m "first commit"
+git remote add originhttps://github.com/AhmedOsamaBasil/PhD.git
+git push -u origin master
+ 
+# Push an existing repository from the command line
+ 
+git remote add origin https://github.com/AhmedOsamaBasil/PhD.git
+git push -u origin master	
