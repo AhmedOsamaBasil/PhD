@@ -9,7 +9,7 @@ import urllib.parse
 
 cap = pyshark.LiveCapture(interface='any')
 cap.sniff(packet_count=10)
-constant.printBanner()
+#constant.printBanner()
 f10=open(sys.argv[1]+"data.txt",'w')
 f10.write("")
 f10.close()
