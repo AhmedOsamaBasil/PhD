@@ -1,4 +1,3 @@
-/* -*- P4_16 -*- */
 #include <core.p4>
 #include <v1model.p4>
 
@@ -7,10 +6,6 @@ const bit<16> TYPE_IPV4 = 0x800;
 const bit<5>  IPV4_OPTION_MRI = 31;
 
 #define MAX_HOPS 9
-
-/*************************************************************************
-*********************** H E A D E R S  ***********************************
-*************************************************************************/
 
 typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
@@ -78,9 +73,6 @@ struct headers {
 
 error { IPHeaderTooShort }
 
-/*************************************************************************
-*********************** P A R S E R  ***********************************
-*************************************************************************/
 
 parser MyParser(packet_in packet,
                 out headers hdr,
@@ -134,21 +126,9 @@ parser MyParser(packet_in packet,
         }
     }    
 }
-
-
-/*************************************************************************
-************   C H E C K S U M    V E R I F I C A T I O N   *************
-*************************************************************************/
-
 control MyVerifyChecksum(inout headers hdr, inout metadata meta) {   
     apply {  }
 }
-
-
-/*************************************************************************
-**************  I N G R E S S   P R O C E S S I N G   *******************
-*************************************************************************/
-
 control MyIngress(inout headers hdr,
                   inout metadata meta,
                   inout standard_metadata_t standard_metadata) {
@@ -183,9 +163,6 @@ control MyIngress(inout headers hdr,
     }
 }
 
-/*************************************************************************
-****************  E G R E S S   P R O C E S S I N G   *******************
-*************************************************************************/
 
 control MyEgress(inout headers hdr,
                  inout metadata meta,
@@ -193,10 +170,6 @@ control MyEgress(inout headers hdr,
     action add_swtrace(switchID_t swid) { 
         hdr.mri.count = hdr.mri.count + 1;
         hdr.swtraces.push_front(1);
-        // According to the P4_16 spec, pushed elements are invalid, so we need
-        // to call setValid(). Older bmv2 versions would mark the new header(s)
-        // valid automatically (P4_14 behavior), but starting with version 1.11,
-        // bmv2 conforms with the P4_16 spec.
         hdr.swtraces[0].setValid();
         hdr.swtraces[0].swid = swid;
         hdr.swtraces[0].qdepth = (qdepth_t)standard_metadata.deq_qdepth;
@@ -221,9 +194,6 @@ control MyEgress(inout headers hdr,
     }
 }
 
-/*************************************************************************
-*************   C H E C K S U M    C O M P U T A T I O N   **************
-*************************************************************************/
 
 control MyComputeChecksum(inout headers hdr, inout metadata meta) {
      apply {
@@ -244,11 +214,6 @@ control MyComputeChecksum(inout headers hdr, inout metadata meta) {
             HashAlgorithm.csum16);
     }
 }
-
-/*************************************************************************
-***********************  D E P A R S E R  *******************************
-*************************************************************************/
-
 control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
@@ -258,11 +223,6 @@ control MyDeparser(packet_out packet, in headers hdr) {
         packet.emit(hdr.swtraces);                 
     }
 }
-
-/*************************************************************************
-***********************  S W I T C H  *******************************
-*************************************************************************/
-
 V1Switch(
 MyParser(),
 MyVerifyChecksum(),
