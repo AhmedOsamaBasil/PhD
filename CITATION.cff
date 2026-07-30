@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use these research artifacts, please cite the thesis and the relevant publication."
+title: "Software-Defined QoE and Fairness Testbed"
+type: software
+authors:
+  - family-names: "Al-Mashhadani"
+    given-names: "Ahmed Osama Basil"
+    orcid: "https://orcid.org/0000-0002-8980-0658"
+repository-code: "https://github.com/AhmedOsamaBasil/PhD"
+url: "https://pure.northampton.ac.uk/en/studentTheses/software-defined-intelligent-networks-for-fairness-and-quality-of"
+keywords:
+  - "quality of experience"
+  - "software-defined networking"
+  - "P4"
+  - "MPEG-DASH"
+  - "fairness"
+  - "machine learning"
+preferred-citation:
+  type: thesis
+  thesis-type: "PhD thesis"
+  title: "Software Defined Intelligent Networks for Fairness and Quality of Experience Prediction and Evaluation"
+  authors:
+    - family-names: "Al-Mashhadani"
+      given-names: "Ahmed Osama Basil"
+      orcid: "https://orcid.org/0000-0002-8980-0658"
+  institution:
+    name: "University of Northampton"
+  year: 2024
+  url: "https://pure.northampton.ac.uk/en/studentTheses/software-defined-intelligent-networks-for-fairness-and-quality-of"

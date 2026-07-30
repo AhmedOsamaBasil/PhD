@@ -1,0 +1,29 @@
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# P4 / BMv2 generated output
+Testbed/build/
+Testbed/logs/
+*.p4i
+*.p4info.txt
+
+# Local packet-monitor output
+observations.csv
+*data.txt
+reqInMin.txt
+demofile2.txt
+
+# Editor and temporary files
+.idea/
+.vscode/
+*.swp
+*.tmp
+*.log

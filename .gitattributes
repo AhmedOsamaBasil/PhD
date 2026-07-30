@@ -1,0 +1,13 @@
+*.md text eol=lf
+*.py text eol=lf
+CITATION.cff text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+requirements.txt text eol=lf
+
+*.m4s binary
+*.mp4 binary
+*.pcap binary
+*.mat binary
+Segments/** linguist-vendored
+DASHIF?Reference?LocalHost?Player/** linguist-vendored
